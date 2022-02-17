@@ -2,4 +2,4 @@ GET http://localhost:3000/customer
 
 
 
-GET http://localhost:3000/dog
+GET http://localhost:3000/all

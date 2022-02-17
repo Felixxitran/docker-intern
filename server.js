@@ -19,8 +19,10 @@ const Customer = mongoose.model('Customer', customerSchema)
 app.listen(3000, () => {
   console.log(`app is running at ${process.pid}`)
 })
-app.get('/dog', (req, res) => {
-  res.send('it works here')
+app.get('/all', async (req, res) => {
+  const output = await Customer.find()
+    .then(() => res.send(output))
+    .catch((error) => res.send(error))
 })
 app.get('/customer', async (req, res) => {
   //res.send('still connected to data base')
@@ -29,6 +31,10 @@ app.get('/customer', async (req, res) => {
     address: 'new address',
     email: 'customer1@new.com',
   })
-  const output = await customer.save()
-  res.send(customer)
+  const output = await customer
+    .save()
+    .then(() => res.send(customer))
+    .catch((error) => {
+      res.send('error saving')
+    })
 })

@@ -9,9 +9,9 @@ services:
     # depends_on:
     #   - mongo
     ports:
-      - '3000:3000'
+      - '3000'
     links:
       - 'mongo:database'
     # environment:
     #   MONGO_URI: 'mongodb://database:27017/test'
-    # scale: 3
+    scale: 3
