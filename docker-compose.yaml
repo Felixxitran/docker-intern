@@ -4,14 +4,15 @@ services:
     image: mongo
     ports:
       - '27017:27017'
+    # name: 'mongodatabase1'
   docket-cat:
     image: docker-cat
-    # depends_on:
-    #   - mongo
+    depends_on:
+      - mongo
     ports:
       - '3000'
     links:
       - 'mongo:database'
-    # environment:
-    #   MONGO_URI: 'mongodb://database:27017/test'
+    environment:
+      ip: 'mongo'
     scale: 3

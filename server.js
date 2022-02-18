@@ -7,8 +7,8 @@ require('dotenv').config()
 const app = express()
 
 mongoose
-  .connect('mongodb://database:27017/test')
-  .then(console.log('connected123'))
+  .connect('mongodb://' + process.env.ip + ':27017/test')
+  .then(console.log('run with' + process.env.ip))
 const customerSchema = new mongoose.Schema({
   name: String,
   address: String,
